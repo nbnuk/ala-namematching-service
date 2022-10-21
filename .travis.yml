@@ -13,19 +13,11 @@ branches:
   - master-nbn
 before_install:
 - mkdir -p ~/.m2; wget -q -O ~/.m2/settings.xml https://raw.githubusercontent.com/AtlasOfLivingAustralia/travis-build-configuration/master/travis_maven_settings_simple.xml
-#- sudo mkdir -p /data/lucene; sudo wget -O /data/lucene/namematching-20210811-3.tgz https://archives.ala.org.au/archives/nameindexes/20210811-3/namematching-20210811-3.tgz
-#- cd /data/lucene
-#- sudo tar zxvf namematching-20210811-3.tgz
-#- sudo ln -s namematching-20210811-3 namematching
-#- ls -laF
-#- cd $TRAVIS_BUILD_DIR
-#- echo TRAVIS_PULL_REQUEST = ${TRAVIS_PULL_REQUEST}
-#- sudo mkdir -p /data/ala-namematching-service/config/
-#- sudo cp $TRAVIS_BUILD_DIR/server/src/main/resources/groups.json /data/ala-namematching-service/config/
-#- sudo cp $TRAVIS_BUILD_DIR/server/src/main/resources/subgroups.json /data/ala-namematching-service/config/
 script:
-- 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then mvn -P travis clean install deploy -Dmaven.test.skip=true; else mvn -P travis clean install -Dmaven.test.skip=true; fi'
+- if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then mvn -P travis clean install deploy
+  -Dmaven.test.skip=true; else mvn -P travis clean install -Dmaven.test.skip=true;
+  fi
 env:
   global:
-  - secure: "knsHmg3QM7BY6MehL0YFMyzl1rsQTIeGSRB4gdFX0p1brRLu9fsb66eix1cFfAXkIK9SGtol7s8i9V5HL3K9h8GgOKeLLEmdm7bZ9yYvphe7KqIj/CbhorrgOBreMAI6q/DtB6pmcPcvTsvlCUPLlAAc7zdWhUO5h8gjCDSVy89PlaaInS1t5KZBmPjvjktUJl/NiidtE4Ki3HERtfBXXbMaERM9grGVa7SvrynzZ9+OjOzBzyM1t1gryD2yunop9YIcLPOQKS2Ol9LHMJiYDClllE1Rox7Cbwb9R3wDKGoJgE0tVhdw5j7MVQc+VIBcY1dLM5E7Gn0gbOejTrGa9GKvwroD5ujwit/BkRHEWVIm6VyAWV5rIFnF4ziD3/msP5k27jVpfKxMzzB3EG3i/nLWfPFnv0B3fwRKMwUoFVJdIyFwGOcnvSGY+lIVeNCEiHZPHYklkgvx+R/duBMEK7MztUSciIDQIErV0PVItSVzlqJUD5x/9yQ0JdIB5lqA4vKOhr4qrhyV+RuUQehviJ7vM4Wl7nl8JQj9/uJcp93fH9onGpO8pOuzDI1acsyrxOq8y9xfaxFs1oUH8khahAZ9MvN2Vcl5JPFY50uPef6aUon9P2oaaiPv/imevglybtv/oagv2+YnhfyMJRDjBbYcy3rwXEWYAckZ7D8cGhk="
-  - secure: "uC0dJ55aKeuGRrqJxGh8MdUybZy4XkO5rKCFHh7+iML+BYt8vxyOfc9NXTUPg4oG8RR5C27Dl754jIkv0KR+0DlvU2TpxRR7E4xUhBIAlafjLIF5tuBPurrmXU1gax5yd51TqfK/ybzTM/idCGp2kZ4u38dUGfjBOfjHusldeB9OWFhK+qVJ1s2rowaNYl51jSHn4rX3c9LYnin4vTmYXLstgSgGi6uZ++J3t3q69dLMQlEooQP2x9Cd+J1KIvgri7iX7ys26B1eEBaeYQhd5GZLPBjo35Y2KhpFiL+CjOPbk/SJxuLJk87B1+cFfvSn1Tv+PB/i6aACg/SAO0RCZjSF0GADahbq7aA3QyKQqg3YUF+lLuh5rdaFtBz/BaeJr8lS0l+jiKDrVxgHs/5GKmDvDmJn5R66FBT5qz5YKE9LsFJwcGeucVxo/Mivh7vPWpEDQ4avfxRdhtX36sRs8AKYdPysfnPB82hLT0NZd6dCRO/sbJHQABlOZRmGl4Us1Tw43HRECNPzcqL1WIK5EalD5lTC/TbebfPPyy0l0Pb012mTzrp7c+HKXqGCA6ujpXgNoooxMRhiON4F0IHYhzRcG/g+EKwCFWefTcP4siJ+OXCoegBTnjL7XPQBEFcCZZYdH8hLClj2ydmBxxzpFqwj3gA2tCDcxq4k5eSO/JE="
+  - secure: RSzZNQGegfCQ+ww8lSAyQgL+x+s44rmRzR4gYy+4G5TivMXzrOjilMbCSErGPEypbLtbESupKI8PAE9kx2fqD9ZBrQp7pU4GeUA4zYpuGqFXlR9qqY86+EvQIb2XgOz5Br3tLAta4qYZ9co+R03LNEih+RVRCliM50CLT3FNfM4Z2Wt8PeLAjIJtliUwNNk2myBbkyh1Lq4xct8U1s1jQgMcgF7PGrA8CE5uFeuqqb/W60tzc8eutrFP9JMjpRGxA4No4AbxSOIolkEhz1Fscjoa6Z+YirRKHh9e0DqN7Q0Y1mTyyE6c+RE+GofgNABztH/swBSHg73ypTdTmpwUHuRKLIb/ewNmZFvOE2e/6Sm2mttiiiTJQdQfh+fHm7xZWABv1y3NiHOD47caCAC6UOfSmErTeCEr4IqTpaUaHdBssBo4zgDMm7x5zblzrXJe2mBuh2ry+SKKPePDD29TPA3G4oojBq2U5zkmu4mWVXaDfuzelMde6NtMozHLWpz7MxSrFs7f6rk4RD6oRxpRkT5E8l+l3gImdfdB8etk4a70MKxYxOWF3021lcHGvDaO3fJu+IqZb6agiFv3E8m3j4dSsoYXyG9VuLMKrSX9MXGuihCOlbQBwVu9DBQTtn/Im63eOUYbUYCkmm1dRXea3tJX3egY/njhX+5LtCWkGv4=
+  - secure: n4yNY8qJSjqa98uk7obBC7TisuDX379s512Ypg5XMBH01R44TXOAXuOF0BPSOxof8wtCw5owqdshnfDAsdYBf8dbv0QfX8kcfnYPaZMS2PZlbL7m/MIIZtA5JOAs+jP0Sfw0SwHwJpUiWeV+uaBZn7FyJBoQJ11jtDfWS2FN/cwKlyti06lnS5hDDuUt49nkm+7kEcRvFoLLeEEpVRyrSWtpGdberm7usZxRK02bEiHR5WF7fUruK2T3MdLd37STotoKnFKRElGROw6/Ep6SsQ/74MxE8tjpCkOLQDNJ1PYomF7lCYH+9pudv9pw36rW6drffczC7ZeKUoQNHMYYCom15x9PlaktGswpCOsrFfheOWW94oYyo0fPd2ExioKe/R3CL3SC9cVjLvMc4d0FPSAxyNHUedZNXwvPLZAO6rqwdmRA5Gyite1jGfN5bgSeNvnIFNRzpSCpKvzXHRKdZoXjH41KFOb2opcNUHk/aHsZtSHXVZVVCn1e8jxURFlFl8LRY4D/7LkisCX6jlFoz6QpuiDfF/FH26RVGQ5iLL0Ln3EKTmgrv8Bkff9xWbjbqYHNE4RQexC1SIHeXncwlKYND9I0zGXKxDQ2VNv2BfpYAT5uM3GZpNxgaCv8VwlaCx1dnA80FZswwZ68nU9OXIgUc9tJZLAVFxoecovbZ3U=
