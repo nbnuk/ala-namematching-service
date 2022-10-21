@@ -591,6 +591,12 @@ public class NameSearchResource implements NameMatchService {
                     .vernacularName(!vernacularNames.isEmpty() ? vernacularNames.iterator().next() : null)
                     .speciesGroup(speciesGroupsUtil.getSpeciesGroups(lft))
                     .speciesSubgroup(speciesGroupsUtil.getSpeciesSubGroups(lft))
+                    //NBN fields
+                    .establishmentMeans(nsr.getEstablishmentMeans())
+                    .nomenclaturalStatus(lrc.getNomenclaturalStatus())
+                    .habitat(nsr.getHabitat())
+                    .author(nsr.getAuthor())
+                    //END NBN fields
                     .issues(issues != null ? issues.stream().map(ErrorType::toString).sorted().collect(Collectors.toList()) : Collections.singletonList("noIssue"))
                     .build();
         } else {

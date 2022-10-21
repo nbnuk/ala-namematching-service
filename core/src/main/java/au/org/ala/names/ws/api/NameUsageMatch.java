@@ -235,6 +235,36 @@ public class NameUsageMatch {
     )
     List<String> issues;
 
+    //NBN fields TODO NBN3
+    String nomenclaturalStatus;
+    @ApiModelProperty(
+            value = "Species groups for the taxon",
+            example = "Animals, Mammals",
+            allowEmptyValue = true
+//            notes = "http://id.ala.org.au/terms/1.0/speciesGroup"
+    )
+    String establishmentMeans;
+    @ApiModelProperty(
+            value = "Species groups for the taxon",
+            example = "Native, Mammals",
+            allowEmptyValue = true
+//            notes = "http://id.ala.org.au/terms/1.0/speciesGroup"
+    )
+    String habitat;
+    @ApiModelProperty(
+            value = "Species groups for the taxon",
+            example = "Animals, Mammals",
+            allowEmptyValue = true
+//            notes = "http://id.ala.org.au/terms/1.0/speciesGroup"
+    )
+    String author;
+    @ApiModelProperty(
+            value = "Species groups for the taxon",
+            example = "Animals, Mammals",
+            allowEmptyValue = true
+//            notes = "http://id.ala.org.au/terms/1.0/speciesGroup"
+    )
+
 
     /**
      * Check this result against a name search.
