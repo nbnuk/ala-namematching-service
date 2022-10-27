@@ -15,6 +15,19 @@
     <name>Common Retrofit Web Service Client Classes</name>
     <description>Common classes and libraries for implementing a retrofit web services client</description>
 
+    <distributionManagement>
+        <repository>
+            <id>uk-nbn-releases</id>
+            <name>Internal Releases</name>
+            <url>https://repository.gbif.org/repository/uk-nbn-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>uk-nbn-snapshots</id>
+            <name>Internal Releases</name>
+            <url>https://repository.gbif.org/repository/uk-nbn-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
