@@ -8,9 +8,8 @@ branches:
   only:
   - master
   - develop
-  - new-services
-  - name-matching-nbn
   - master-nbn
+  - name-matching-nbn
 before_install:
 - mkdir -p ~/.m2; wget -q -O ~/.m2/settings.xml https://raw.githubusercontent.com/AtlasOfLivingAustralia/travis-build-configuration/master/travis_maven_settings_simple.xml
 script:
