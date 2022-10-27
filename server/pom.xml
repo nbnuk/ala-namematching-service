@@ -18,6 +18,19 @@
         <hibernate-validator.version>6.0.18.Final</hibernate-validator.version>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>uk-nbn-releases</id>
+            <name>Internal Releases</name>
+            <url>https://repository.gbif.org/repository/uk-nbn-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>uk-nbn-snapshots</id>
+            <name>Internal Releases</name>
+            <url>https://repository.gbif.org/repository/uk-nbn-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
