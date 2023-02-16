@@ -49,6 +49,16 @@
         </license>
     </licenses>
 
+    <repositories>
+        <repository>
+            <id>uk-nbn-releases</id>
+            <url>https://repository.gbif.org/repository/uk-nbn-releases</url>
+        </repository>
+        <repository>
+            <id>uk-nbn-snapshots</id>
+            <url>https://repository.gbif.org/repository/uk-nbn-snapshots</url>
+        </repository>
+    </repositories>
     <distributionManagement>
         <repository>
             <id>uk-nbn-releases</id>
