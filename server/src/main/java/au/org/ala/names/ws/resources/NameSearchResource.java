@@ -418,9 +418,9 @@ public class NameSearchResource implements NameMatchService {
         NameSearchResult idnsr = null;
 
         if (search.getTaxonConceptID() != null) {
-            idnsr = searcher.searchForRecordByLsid(search.getTaxonConceptID());
+            return lookup(search.getTaxonConceptID(),true);
         } else if (search.getTaxonID() != null) {
-            idnsr = searcher.searchForRecordByLsid(search.getTaxonID());
+            return lookup(search.getTaxonID(),true);
         }
 
         if (idnsr != null){
