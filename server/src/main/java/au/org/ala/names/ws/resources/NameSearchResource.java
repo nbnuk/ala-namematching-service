@@ -416,11 +416,16 @@ public class NameSearchResource implements NameMatchService {
         NameUsageMatch match = null;
         //attempt 1: search via taxonConceptID or taxonID if provided
         NameSearchResult idnsr = null;
+        NameUsageMatch idNameUsageMatch = null;
 
         if (search.getTaxonConceptID() != null) {
-            return lookup(search.getTaxonConceptID(),true);
+            idNameUsageMatch = lookup(search.getTaxonConceptID(),true);
         } else if (search.getTaxonID() != null) {
-            return lookup(search.getTaxonID(),true);
+            idNameUsageMatch = lookup(search.getTaxonID(),true);
+        }
+
+        if (idNameUsageMatch != null && !idNameUsageMatch.equals(NameUsageMatch.FAIL)) {
+            return idNameUsageMatch;
         }
 
         if (idnsr != null){
